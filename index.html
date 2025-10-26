@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVRABLE 1 : Tableau de Bord Idéation - Fagaru Device</title>
+    <!-- Chargement de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuration Tailwind pour la police Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; /* Light background */
+        }
+        .section-header {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- En-tête du Tableau de Bord -->
+        <header class="text-center mb-10 p-6 bg-white rounded-xl card border-b-4 border-blue-600">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 tracking-tight">
+                LIVRABLE 1 : INTRODUCTION & IDÉATION
+            </h1>
+            <p class="mt-2 text-xl text-blue-600 font-medium">Fagaru Device Project</p>
+        </header>
+
+        <main class="space-y-6">
+
+            <!-- Card 1: Description de l’Esprit Entrepreneurial -->
+            <div class="bg-white p-6 rounded-xl card border-t-4 border-green-500">
+                <div class="section-header flex justify-between items-center" onclick="toggleSection('esprit-content')">
+                    <h2 class="text-2xl font-semibold text-gray-700">1. Esprit Entrepreneurial</h2>
+                    <svg id="esprit-icon" class="w-6 h-6 text-green-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="esprit-content" class="mt-4 space-y-4 border-t border-gray-200 pt-4 hidden">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Mon état d’esprit (150 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">Mon esprit entrepreneurial repose sur la créativité, la persévérance et l’impact social. Je crois qu’entreprendre, c’est identifier un besoin réel et y apporter une solution locale, durable et inclusive. J’aime transformer les contraintes en opportunités, apprendre en expérimentant, et fédérer une équipe autour d’une vision commune. Dans le projet Fagaru Device, cet état d’esprit se manifeste par ma volonté de concevoir une innovation Made in Sénégal, en mobilisant des compétences locales et en valorisant la santé numérique. J’ai su combiner technologie, santé et éducation pour répondre à un besoin concret tout en créant de la valeur sociale. Cet esprit d’innovation et d’utilité guide chacune de mes décisions.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Exemple de situation entreprenante (100 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">Lors d’un stage dans un hôpital, j’ai observé les difficultés des infirmiers à trouver les veines pour les perfusions. Plutôt que de constater le problème, j’ai pris l’initiative d’enquêter, de recueillir des témoignages et de consulter des ingénieurs biomédicaux. Cette démarche proactive m’a permis d’imaginer une solution technologique simple et locale : le Fagaru Device. J’ai mobilisé des camarades en électronique et design pour réaliser les premiers croquis et plans 3D. Cette initiative illustre ma capacité à passer de l’observation à l’action, avec une approche centrée sur l’utilisateur.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2: Le Voyage Entrepreneurial de Fagaru Device -->
+            <div class="bg-white p-6 rounded-xl card border-t-4 border-yellow-500">
+                <div class="section-header flex justify-between items-center" onclick="toggleSection('voyage-content')">
+                    <h2 class="text-2xl font-semibold text-gray-700">2. Le Voyage Entrepreneurial</h2>
+                    <svg id="voyage-icon" class="w-6 h-6 text-yellow-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="voyage-content" class="mt-4 space-y-4 border-t border-gray-200 pt-4 hidden">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Étape actuelle du projet : Idéation (100 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">Le projet Fagaru Device est actuellement à l’étape d’idéation avancée. Nous avons identifié le besoin, défini la solution et commencé à concevoir le premier prototype. Des recherches documentaires et des échanges avec le personnel médical ont confirmé la pertinence du projet. Nous travaillons à modéliser le dispositif, établir un cahier des charges et rechercher un financement pour la phase de prototypage. Cette étape est cruciale pour valider la faisabilité technique et économique du produit avant le déploiement pilote.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Prochaines étapes et défis (150 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">Les prochaines étapes incluent la fabrication du prototype, les tests en milieu hospitalier et la formation du personnel. Les principaux défis concernent le financement initial, la validation réglementaire et la disponibilité des composants électroniques. Pour les surmonter, nous prévoyons : De solliciter des appels à projets et subventions dans la santé numérique. De collaborer avec des universités et start-ups locales pour le prototypage. D’utiliser des matériaux accessibles pour réduire les coûts. Notre approche agile et collaborative nous permettra d’ajuster rapidement la conception selon les retours du terrain. L’objectif est de transformer ce prototype en produit fonctionnel, certifié et produit localement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Analyse du Paysage Économique Sénégalais et Opportunités -->
+            <div class="bg-white p-6 rounded-xl card border-t-4 border-blue-500">
+                <div class="section-header flex justify-between items-center" onclick="toggleSection('paysage-content')">
+                    <h2 class="text-2xl font-semibold text-gray-700">3. Paysage Économique & Opportunités</h2>
+                    <svg id="paysage-icon" class="w-6 h-6 text-blue-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="paysage-content" class="mt-4 space-y-6 border-t border-gray-200 pt-4 hidden">
+
+                    <!-- PESTEL -->
+                    <h3 class="font-bold text-xl text-gray-800">Analyse PESTEL (500 mots max)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 rounded-lg overflow-hidden">
+                            <thead class="bg-blue-50">
+                                <tr>
+                                    <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Facteur</th>
+                                    <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Situation au Sénégal</th>
+                                    <th class="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impact et Opportunités</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-indigo-50">
+                                    <td class="px-3 py-4 whitespace-nowrap font-medium text-blue-700">Politique (P)</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Stabilité politique relative et politique favorable à l'innovation et à la santé publique (PSE, SN2025). Le gouvernement soutient les initiatives locales en e-santé, créant un cadre propice au Fagaru Device.</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Le projet s’aligne sur les politiques de santé publique et peut bénéficier de financements liés à la CMU et au développement de l'e-santé.</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50">
+                                    <td class="px-3 py-4 whitespace-nowrap font-medium text-blue-700">Économique (E)</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Croissance soutenue de l’économie, mais budgets santé limités et coût élevé du matériel importé. Un dispositif local et abordable répond à un besoin économique crucial.</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Le Fagaru Device à faible coût est une alternative économique, favorisant la souveraineté technologique et réduisant les dépenses d’importation.</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50">
+                                    <td class="px-3 py-4 whitespace-nowrap font-medium text-blue-700">Social (S)</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Inégalité d’accès aux soins (rural/urbain). Le projet améliore la qualité des soins, réduit la douleur des patients et renforce les compétences des soignants locaux.</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Le caractère portable et abordable répond aux besoins des structures sous-équipées et contribue à l'équité des soins.</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50">
+                                    <td class="px-3 py-4 whitespace-nowrap font-medium text-blue-700">Technologique (T)</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Montée du healthtech, FabLabs et impression 3D. Le Sénégal dispose de jeunes talents en ingénierie capables de concevoir et de maintenir cette solution.</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Favorise le développement local du prototype et l’intégration de modules numériques pour le suivi d’usage et de performance.</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50">
+                                    <td class="px-3 py-4 whitespace-nowrap font-medium text-blue-700">Environnemental (E)</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Conception éco-responsable (matériaux durables et faible consommation) et production locale réduisant l’empreinte carbone liée aux importations.</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Design éco-responsable et production locale contribuent à la durabilité et à l'acceptation institutionnelle.</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50">
+                                    <td class="px-3 py-4 whitespace-nowrap font-medium text-blue-700">Légal (L)</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Régulation du secteur biomédical par le Ministère de la Santé. Des procédures d’homologation sont nécessaires, facilitées par des partenariats institutionnels.</td>
+                                    <td class="px-3 py-4 text-sm text-gray-600">Intégrer tôt la conformité réglementaire garantit une homologation rapide et sécurise la commercialisation.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Opportunités détaillées -->
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-gray-800">Opportunités offertes par le secteur (150 mots max)</h3>
+                            <p class="text-gray-600 text-sm mt-1">Le secteur de la santé numérique au Sénégal connaît une forte expansion grâce à la digitalisation des soins et aux politiques d’innovation. Les opportunités résident dans : Le développement d’équipements médicaux locaux à faible coût. La formation des professionnels de santé aux nouvelles technologies. La maintenance biomédicale locale, encore peu structurée. Le Fagaru Device s’intègre parfaitement à ces dynamiques : il améliore les pratiques cliniques tout en valorisant la production locale et la formation technique. Cette convergence entre santé, éducation et technologie crée un fort potentiel de croissance et d’impact social durable.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-gray-800">Exemple concret d’opportunité sectorielle (100 mots max)</h3>
+                            <p class="text-gray-600 text-sm mt-1">Dans le domaine de la santé maternelle et infantile, de nombreux hôpitaux rencontrent des difficultés pour poser des perfusions chez les enfants. L’utilisation du Fagaru Device améliorerait la réussite de ces gestes, réduirait la douleur des nourrissons et renforcerait la confiance du personnel. Cela illustre parfaitement comment une innovation locale peut résoudre un problème de santé publique tout en soutenant l’économie locale.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-gray-800">Projet d’entreprise à partir des opportunités (100 mots max)</h3>
+                            <p class="text-gray-600 text-sm mt-1">Le projet Fagaru Device vise à concevoir localement un projecteur de veines abordable pour faciliter les perfusions. Le modèle économique reposera sur la production locale à petite échelle, la vente aux établissements de santé et les partenariats stratégiques avec l’État et les ONG pour l’équipement communautaire. L’objectif est de développer les compétences biomédicales locales, renforcer la formation du personnel soignant, et ainsi améliorer l’efficacité et l’accessibilité des soins au Sénégal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Méthodes d’Idéation et Validation du Problème -->
+            <div class="bg-white p-6 rounded-xl card border-t-4 border-purple-500">
+                <div class="section-header flex justify-between items-center" onclick="toggleSection('ideation-content')">
+                    <h2 class="text-2xl font-semibold text-gray-700">4. Idéation et Validation du Problème</h2>
+                    <svg id="ideation-icon" class="w-6 h-6 text-purple-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="ideation-content" class="mt-4 space-y-4 border-t border-gray-200 pt-4 hidden">
+                    
+                    <!-- Espace réservé pour l'image d'illustration du Fagaru Device -->
+                    <div class="mb-6 text-center">
+                        <img src="unnamed.jpg" alt="Illustration du Fagaru Device en action" class="max-w-full h-auto rounded-lg shadow-md mx-auto">
+                        <p class="text-gray-500 text-sm mt-2">Le Fagaru Device en cours de prototypage pour la visualisation veineuse.</p>
+                    </div>
+
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Deux méthodes d’idéation utilisées (100 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">1️⃣ **Brainstorming collaboratif** : organisé avec des soignants et ingénieurs pour recueillir des idées sur la conception et les besoins réels du terrain. 2️⃣ **Empathy Map** : utilisée pour comprendre les émotions et attentes des infirmiers pendant la pose de perfusion. Ces méthodes ont permis de centrer le produit sur l’expérience utilisateur et d’identifier des fonctionnalités clés (portabilité, autonomie, coût réduit). Elles ont aussi renforcé l’adhésion des futurs utilisateurs dès la conception, garantissant la pertinence et l’utilité du dispositif.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Le problème à résoudre (50 mots max)</h3>
+                       <p class="text-gray-600 text-sm mt-1">La difficulté de visualiser les veines entraîne des échecs répétés de perfusion, augmentant douleur, stress et perte de temps pour les patients et les soignants.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Solution numérique proposée (70 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">Un dispositif numérique portable, Fagaru Device, utilisant la lumière infrarouge pour visualiser les veines, fabriqué localement et accessible à moindre coût.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-bold text-lg text-gray-800">Prototype du produit (100 mots max)</h3>
+                        <p class="text-gray-600 text-sm mt-1">Le premier prototype du Fagaru Device ressemblera à un petit projecteur portatif relié à une batterie rechargeable. L’appareil émettra une lumière infrarouge douce projetant en surface le réseau veineux. Il sera logé dans un boîtier imprimé en 3D, compact et ergonomique. Un bouton permettra d’ajuster la luminosité selon la peau du patient. L’objectif est d’obtenir un outil simple, léger, fiable et réparable localement. Ce prototype servira de base à la phase de test clinique et d’amélioration continue avant la production à grande échelle.</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="mt-10 text-center text-gray-500 text-sm">
+            Dashboard généré pour Fagaru Device. Cliquez sur les titres pour développer les sections.
+        </footer>
+    </div>
+
+    <!-- JavaScript pour la fonctionnalité de bascule (Toggle) -->
+    <script>
+        /**
+         * Bascule la visibilité du contenu d'une section et fait pivoter l'icône.
+         * @param {string} contentId - L'ID de l'élément de contenu à masquer/afficher.
+         */
+        function toggleSection(contentId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(contentId.replace('-content', '-icon'));
+            
+            if (content.classList.contains('hidden')) {
+                // Afficher le contenu
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                // Masquer le contenu
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        // Ouvrir la première section par défaut au chargement
+        window.onload = function() {
+            toggleSection('esprit-content');
+        };
+    </script>
+</body>
+</html>
