@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT_Health - Tableau de Bord du Projet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Off-white, Dark Gray, Gentle Blue, Soft Teal) -->
+    <!-- Application Structure Plan: A single-page dashboard with a sticky navigation bar (Le Projet, Le Voyage, Modèle Éco, Le Marché, L'Analyse, Stratégie). The structure guides the user from the core concept and its value proposition, through the entrepreneurial journey and its challenges, into the business model, the market context, and finally dynamic strategic analysis (PESTEL + LLM). This flow is designed for a strategic review of the business plan. -->
+    <!-- Visualization & Content Choices: PESTEL -> Radar Chart (Chart.js) + Interactive Text. BMC -> 3x3 Grid (HTML/Tailwind). Journey -> HTML Timeline. Challenges -> HTML Card Layout. All choices prioritize clarity, structure, and interactive exploration over static text. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8F7F4;
+            color: #3C3C3C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-cyan-600">IoT_Health</h1>
+            <div class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="#projet" class="text-gray-600 hover:text-cyan-600 transition duration-300">Le Projet</a>
+                <a href="#voyage" class="text-gray-600 hover:text-cyan-600 transition duration-300">Le Voyage</a>
+                <a href="#modele-eco" class="text-gray-600 hover:text-cyan-600 transition duration-300">Modèle Éco</a>
+                <a href="#marche" class="text-gray-600 hover:text-cyan-600 transition duration-300">Le Marché</a>
+                <a href="#analyse" class="text-gray-600 hover:text-cyan-600 transition duration-300">L'Analyse</a>
+                <a href="#llm-strategie" class="text-gray-600 hover:text-cyan-600 transition duration-300">Stratégie ✨</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="hero" class="text-center py-16">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Une vision claire pour les soins de santé.</h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-8">IoT_Health améliore la réussite des ponctions veineuses grâce au VenoLight, un projecteur infrarouge portable conçu pour le contexte sénégalais.</p>
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-2xl mx-auto border border-gray-100">
+                <div class="w-full h-65 mb-4 overflow-hidden rounded-lg shadow-inner">
+                    <img src="fagaru-divice.jpg" alt="Image d'illustration du dispositif VenoLight en cours d'utilisation pour la localisation des veines" />
+                </div>
+                <h3 class="text-xl font-semibold text-cyan-700">Prototype fagaru divice 1.0</h3>
+                <p class="text-gray-600 mt-2">Un mini-projecteur ergonomique, de la taille d’une paume, en polymère chirurgical résistant. Il projette une lumière infrarouge qui révèle les veines sous la peau. Léger, rechargeable par USB-C, il se porte au poignet via une sangle ajustable.</p>
+            </div>
+        </section>
+
+        <section id="projet" class="py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-2">Le Projet : Notre Mission</h2>
+                <p class="text-md text-gray-600 max-w-3xl mx-auto">IoT_Health vise à améliorer la réussite de ponctions veineuses en milieu hospitalier grâce au VenoLight, un projecteur infrarouge portable qui visualise les veines. Le dispositif est conçu pour être simple, peu coûteux et adapté au contexte sénégalais, avec un accent sur la conformité réglementaire (ANAC-IM) et la production locale.</p>
+            </div>
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-center mb-6">Propositions de Valeur</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
+                        <div class="text-4xl mb-3">🎯</div>
+                        <h4 class="text-xl font-bold mb-2 text-cyan-700">Amélioration Clinique</h4>
+                        <p class="text-gray-600">Amélioration de la réussite de ponctions veineuses, particulièrement chez les enfants et les patients difficiles à ponctionner.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
+                        <div class="text-4xl mb-3">🌍</div>
+                        <h4 class="text-xl font-bold mb-2 text-cyan-700">Conception Adaptée</h4>
+                        <p class="text-gray-600">Dispositif portable, simple d’utilisation et coût abordable, adapté au contexte sénégalais.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
+                        <div class="text-4xl mb-3">📡</div>
+                        <h4 class="text-xl font-bold mb-2 text-cyan-700">Connectivité IoT</h4>
+                        <p class="text-gray-600">Système IoT intégré pour le suivi d’utilisation, la maintenance et la formation continue.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="voyage" class="py-16">
+            <div class="text-center mb-12">
+                 <h2 class="text-3xl font-bold mb-2">Notre Voyage Entrepreneurial</h2>
+                 <p class="text-md text-gray-600 max-w-2xl mx-auto">De l'idée à l'impact. Voici notre feuille de route, les défis majeurs que nous anticipons et les stratégies que nous mettons en place pour les surmonter.</p>
+            </div>
+
+            <div class="w-full max-w-5xl mx-auto">
+                <div class="relative">
+                    <div class="absolute left-1/2 top-0 h-full w-0.5 bg-gray-300"></div>
+                    
+                    <div class="relative flex justify-between items-center w-full mb-12">
+                        <div class="w-5/12">
+                            <div class="bg-cyan-600 text-white p-4 rounded-lg shadow-md">
+                                <h3 class="font-bold">Idéation Avancée</h3>
+                                <p class="text-sm">Validation du concept VenoLight. Préparation du MVP et du dossier ANAC-IM. Études techniques et économiques en cours.</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-1/2 -translate-x-1/2 z-10 w-8 h-8 bg-cyan-600 rounded-full border-4 border-white flex items-center justify-center">
+                            <div class="w-3 h-3 bg-white rounded-full"></div>
+                        </div>
+                        <div class="w-5/12 text-right font-bold text-cyan-600">ÉTAPE ACTUELLE</div>
+                    </div>
+
+                    <div class="relative flex justify-between items-center w-full mb-12">
+                        <div class="w-5/12 text-left font-bold text-gray-500">PROCHAINE ÉTAPE</div>
+                         <div class="absolute left-1/2 -translate-x-1/2 z-10 w-6 h-6 bg-white rounded-full border-4 border-gray-300"></div>
+                        <div class="w-5/12">
+                            <div class="bg-white p-4 rounded-lg shadow-md border">
+                                <h3 class="font-bold">Prototype VenoLight 1.0</h3>
+                                <p class="text-sm">Finaliser VenoLight 1.0 (dimensions, connectivité, autonomie). Conduire tests électriques, biocompatibilité et sécurité.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                     <div class="relative flex justify-between items-center w-full mb-12">
+                        <div class="w-5/12">
+                            <div class="bg-white p-4 rounded-lg shadow-md border">
+                                <h3 class="font-bold">Production & Homologation</h3>
+                                <p class="text-sm">Validation clinique, soumission ANAC-IM et planification de la production semi-industrielle locale.</p>
+                            </div>
+                        </div>
+                         <div class="absolute left-1/2 -translate-x-1/2 z-10 w-6 h-6 bg-white rounded-full border-4 border-gray-300"></div>
+                        <div class="w-5/12 text-right font-bold text-gray-500">PHASE 2</div>
+                    </div>
+
+                    <div class="relative flex justify-between items-center w-full">
+                        <div class="w-5/12 text-left font-bold text-gray-500">PHASE 3</div>
+                         <div class="absolute left-1/2 -translate-x-1/2 z-10 w-6 h-6 bg-white rounded-full border-4 border-gray-300"></div>
+                        <div class="w-5/12">
+                            <div class="bg-white p-4 rounded-lg shadow-md border">
+                                <h3 class="font-bold">Déploiement Pilote</h3>
+                                <p class="text-sm">Établir accords avec hôpitaux pilotes et ONG. Déployer programme de formation et support technique.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+             <div class="mt-16 bg-white p-8 rounded-lg shadow-md border">
+                <h3 class="text-2xl font-semibold text-center mb-6">Défis et Plans de Mitigation</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Défi #1 : Composants</h4>
+                        <p class="text-gray-600 mb-4">Accès fiable aux composants électroniques critiques.</p>
+                        <p class="font-semibold text-cyan-700">Notre Stratégie :</p>
+                        <p class="text-gray-600">Partenariats avec fab labs et écoles; alternatives locales; stock de pièces critiques.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Défi #2 : Financement</h4>
+                        <p class="text-gray-600 mb-4">Financement initial pour le prototypage et la certification.</p>
+                         <p class="font-semibold text-cyan-700">Notre Stratégie :</p>
+                        <p class="text-gray-600">Subventions publiques, cofinancement ONG, investisseurs locaux; démonstrateur et traction terrain.</p>
+                    </div>
+                     <div>
+                        <h4 class="text-xl font-bold mb-2">Défi #3 : Homologation</h4>
+                        <p class="text-gray-600 mb-4">Complexité et délais du processus de conformité ANAC-IM.</p>
+                         <p class="font-semibold text-cyan-700">Notre Stratégie :</p>
+                        <p class="text-gray-600">Engagement précoce d’un expert ANAC-IM; plan de tests documenté et piloté dès le début.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-2">Défi #4 : Adoption</h4>
+                        <p class="text-gray-600 mb-4">Adoption et usage par le personnel soignant.</p>
+                         <p class="font-semibold text-cyan-700">Notre Stratégie :</p>
+                        <p class="text-gray-600">Formation, documentation claire, support technique local, retours utilisateurs intégrés au cycle de développement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modele-eco" class="py-16 bg-cyan-50/50 rounded-lg">
+             <div class="text-center mb-12">
+                 <h2 class="text-3xl font-bold mb-2">Notre Modèle Économique (BMC)</h2>
+                 <p class="text-md text-gray-600 max-w-2xl mx-auto">Une vue d'ensemble de la structure de notre entreprise, de nos partenaires clés à nos flux de revenus, conçue pour la durabilité et l'impact local.</p>
+            </div>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-white p-6 rounded-lg shadow-md border"><h4 class="text-xl font-bold mb-3 text-cyan-700">Partenariats Clés</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Fab labs & Universités</li><li>Hôpitaux pilotes</li><li>Autorités sanitaires (ANAC-IM)</li><li>Organismes de financement</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border"><h4 class="text-xl font-bold mb-3 text-cyan-700">Activités Clés</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Développement produit (R&D)</li><li>Tests cliniques</li><li>Conformité réglementaire</li><li>Production & Assemblage local</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border lg:row-span-2"><h4 class="text-xl font-bold mb-3 text-cyan-700">Propositions de Valeur</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Amélioration taux de réussite ponctions</li><li>Dispositif portable, simple et abordable</li><li>Adapté au contexte sénégalais</li><li>Suivi IoT (maintenance, formation)</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border"><h4 class="text-xl font-bold mb-3 text-cyan-700">Relations Clients</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Assistance technique locale</li><li>Formation du personnel soignant</li><li>Contrats de maintenance</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border lg:row-span-2"><h4 class="text-xl font-bold mb-3 text-cyan-700">Segments de Clientèle</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Hôpitaux publics et privés</li><li>Centres de santé régionaux</li><li>Cliniques pédiatriques</li><li>ONG et programmes d'équipement</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border"><h4 class="text-xl font-bold mb-3 text-cyan-700">Ressources Clés</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Équipe d'ingénierie</li><li>Réseau hospitalier pilote</li><li>Expert réglementaire ANAC-IM</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border"><h4 class="text-xl font-bold mb-3 text-cyan-700">Canaux</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Appels d’offres publics</li><li>Partenariats ONG</li><li>Vente directe aux structures</li><li>Distributeurs locaux</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border lg:col-span-2"><h4 class="text-xl font-bold mb-3 text-cyan-700">Structure des Coûts</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>R&D, Prototypage & Validation</li><li>Achat composants électroniques</li><li>Certification & Homologation</li><li>Production locale & Assemblage</li><li>Support et maintenance</li></ul></div>
+                <div class="bg-white p-6 rounded-lg shadow-md border"><h4 class="text-xl font-bold mb-3 text-cyan-700">Flux de Revenus</h4><ul class="list-disc list-inside text-gray-600 space-y-1"><li>Vente du dispositif VenoLight</li><li>Contrats de maintenance</li><li>Services de formation</li><li>Mises à jour logicielles</li></ul></div>
+
+            </div>
+        </section>
+        
+        <section id="marche" class="py-16">
+             <div class="text-center mb-12">
+                 <h2 class="text-3xl font-bold mb-2">Le Marché Sénégalais : Opportunités & Risques</h2>
+                 <p class="text-md text-gray-600 max-w-2xl mx-auto">Notre projet s'ancre dans un écosystème local porteur, répondant à une demande claire avec une solution économiquement viable et stratégiquement alignée.</p>
+            </div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md border">
+                    <h4 class="text-xl font-bold mb-2 text-cyan-700">Opportunités Sectorielles</h4>
+                    <p class="text-gray-600">Demande forte en dispositifs d'aide au diagnostic et à la perfusion; besoin de solutions simples et fiables dans les structures publiques; potentiel de rapprochement avec les programmes de santé universitaire et communautaire.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border">
+                    <h4 class="text-xl font-bold mb-2 text-cyan-700">Avantage Compétitif</h4>
+                    <p class="text-gray-600">VenoLight offre une solution portable et abordable réduisant les coûts d’importation et améliorant l’accès aux soins dans les zones rurales.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border md:col-span-2 lg:col-span-1">
+                    <h4 class="text-xl font-bold mb-2 text-cyan-700">Facteurs Facilitants</h4>
+                    <p class="text-gray-600">Réseau de fab labs, universités et start-ups IoT; soutien gouvernemental à l’innovation en santé et à la CMU.</p>
+                </div>
+            </div>
+            <div class="max-w-5xl mx-auto mt-8 bg-white p-8 rounded-lg shadow-md border">
+                <h3 class="text-2xl font-semibold text-center mb-6">Risques Économiques et Concurrentiels</h3>
+                 <ul class="list-disc list-inside text-gray-700 space-y-2 max-w-3xl mx-auto">
+                    <li>Dépendance aux chaînes d’approvisionnement électroniques pour les composants clés.</li>
+                    <li>Évolutions réglementaires de l'ANAC-IM pouvant retarder la mise sur le marché.</li>
+                    <li>Concurrence potentielle des solutions importées, même si plus coûteuses.</li>
+                    <li>Budgets limités des structures de santé publiques pouvant freiner l'adoption.</li>
+                 </ul>
+            </div>
+        </section>
+
+        <section id="analyse" class="py-16">
+            <div class="text-center mb-12">
+                 <h2 class="text-3xl font-bold mb-2">Analyse Stratégique (PESTEL)</h2>
+                 <p class="text-md text-gray-600 max-w-2xl mx-auto">Pour assurer notre succès, nous avons réalisé une analyse approfondie de notre environnement. Explorez de manière interactive les facteurs politiques, économiques, sociaux, technologiques, environnementaux et légaux qui influencent notre projet. Cliquez sur un facteur pour voir les détails.</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-6 rounded-lg shadow-md border">
+                    <div class="chart-container">
+                        <canvas id="pestelChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md border min-h-[400px]">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                         <button id="btn-p" class="pestel-btn bg-cyan-500 text-white px-4 py-2 rounded-full text-sm">Politique</button>
+                         <button id="btn-e" class="pestel-btn bg-gray-300 text-gray-800 px-4 py-2 rounded-full text-sm">Économique</button>
+                         <button id="btn-s" class="pestel-btn bg-gray-300 text-gray-800 px-4 py-2 rounded-full text-sm">Social</button>
+                         <button id="btn-t" class="pestel-btn bg-gray-300 text-gray-800 px-4 py-2 rounded-full text-sm">Technologique</button>
+                         <button id="btn-env" class="pestel-btn bg-gray-300 text-gray-800 px-4 py-2 rounded-full text-sm">Environnemental</button>
+                         <button id="btn-l" class="pestel-btn bg-gray-300 text-gray-800 px-4 py-2 rounded-full text-sm">Légal</button>
+                    </div>
+                    <div id="pestel-details">
+                        <h3 id="pestel-title" class="text-xl font-bold text-cyan-700 mb-2"></h3>
+                        <p id="pestel-text" class="text-gray-700"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="llm-strategie" class="py-16">
+            <div class="text-center mb-12">
+                 <h2 class="text-3xl font-bold mb-2">Analyse Prospective LLM ✨</h2>
+                 <p class="text-md text-gray-600 max-w-2xl mx-auto">Utilisez Gemini pour générer des conseils stratégiques ou des plans de mitigation pour les défis identifiés. La réponse est ancrée dans les données Web actuelles pour un maximum de pertinence.</p>
+            </div>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                <div class="mb-4">
+                    <label for="strategy-prompt" class="block text-lg font-medium text-gray-700 mb-2">Votre Question Stratégique :</label>
+                    <textarea id="strategy-prompt" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500" placeholder="Ex: Suggérez des étapes pour obtenir l'accréditation ANAC-IM."></textarea>
+                </div>
+                <button id="generate-strategy-btn" class="w-full bg-cyan-600 text-white font-semibold py-3 rounded-lg hover:bg-cyan-700 transition duration-300 shadow-md flex items-center justify-center">
+                    Générer la Stratégie ✨
+                </button>
+                <div id="strategy-result" class="mt-8 p-6 bg-cyan-50/70 rounded-lg border border-cyan-200 min-h-20 hidden">
+                    <h4 class="text-xl font-bold text-cyan-800 mb-3" id="result-title">Résultat de l'Analyse Prospective</h4>
+                    <p id="result-text" class="text-gray-800 leading-relaxed"></p>
+                    <div id="result-sources" class="mt-4 pt-4 border-t border-cyan-200 text-sm text-gray-600"></div>
+                </div>
+                <div id="strategy-loading" class="mt-8 text-center hidden">
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-t-4 border-cyan-500 border-gray-200"></div>
+                    <p class="mt-2 text-gray-600">Analyse en cours par Gemini...</p>
+                </div>
+            </div>
+        </section> -->
+
+    </main>
+    
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <p>&copy; 2025 IoT_Health. Tous droits réservés.</p>
+        <p class="text-sm text-gray-400">Une nouvelle vision pour les soins de santé au Sénégal.</p>
+    </footer>
+
+    <script>
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+        const promptInput = document.getElementById('strategy-prompt');
+        const generateBtn = document.getElementById('generate-strategy-btn');
+        const resultDiv = document.getElementById('strategy-result');
+        const resultTextEl = document.getElementById('result-text');
+        const resultSourcesEl = document.getElementById('result-sources');
+        const loadingDiv = document.getElementById('strategy-loading');
+
+        function showLoading() {
+            resultDiv.classList.add('hidden');
+            loadingDiv.classList.remove('hidden');
+            generateBtn.disabled = true;
+            generateBtn.innerHTML = '<span class="mr-2">Génération...</span>';
+        }
+
+        function hideLoading() {
+            loadingDiv.classList.add('hidden');
+            generateBtn.disabled = false;
+            generateBtn.innerHTML = 'Générer la Stratégie ✨';
+        }
+
+        function displayError(message) {
+            resultTextEl.innerHTML = `<p class="text-red-600 font-semibold">${message}</p>`;
+            resultSourcesEl.innerHTML = '';
+            resultDiv.classList.remove('hidden');
+            resultDiv.classList.add('bg-red-100', 'border-red-300');
+            hideLoading();
+        }
+        
+        async function exponentialBackoffFetch(url, options, maxRetries = 5) {
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.status !== 429 && response.ok) {
+                        return response;
+                    }
+                    if (response.status === 429 && i < maxRetries - 1) {
+                        const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        continue;
+                    }
+                    throw new Error(`Erreur HTTP: ${response.status} ${response.statusText}`);
+                } catch (error) {
+                    if (i === maxRetries - 1) throw error;
+                    const delay = Math.pow(2, i) * 1000 + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                }
+            }
+        }
+
+        async function generateStrategy() {
+            const userPrompt = promptInput.value.trim();
+            if (!userPrompt) {
+                displayError("Veuillez entrer une question stratégique.");
+                return;
+            }
+
+            showLoading();
+
+            const systemInstruction = "Agissez comme un consultant en stratégie et en technologie de la santé pour une startup au Sénégal. Fournissez des conseils concis, exploitables et pertinents, en français. Basez-vous sur des données concrètes et des tendances actuelles.";
+            
+            const payload = {
+                contents: [{ 
+                    parts: [
+                        { text: `En tant que startup (IoT_Health) au Sénégal développant un projecteur de veines (VenoLight) pour améliorer les ponctions veineuses, fournissez une analyse et une stratégie concernant la question suivante : ${userPrompt}` }
+                    ] 
+                }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                },
+                config: {
+                    temperature: 0.7
+                }
+            };
+
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            };
+
+            try {
+                const response = await exponentialBackoffFetch(apiUrl, options);
+                const result = await response.json();
+                
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    const text = candidate.content.parts[0].text;
+                    let sources = [];
+                    const groundingMetadata = candidate.groundingMetadata;
+
+                    if (groundingMetadata && groundingMetadata.groundingAttributions) {
+                        sources = groundingMetadata.groundingAttributions
+                            .map(attribution => ({
+                                uri: attribution.web?.uri,
+                                title: attribution.web?.title,
+                            }))
+                            .filter(source => source.uri && source.title);
+                    }
+
+                    resultTextEl.innerHTML = text.replace(/\n/g, '<br>');
+                    resultSourcesEl.innerHTML = '';
+
+                    if (sources.length > 0) {
+                        const sourcesList = sources.map((s, index) => 
+                            `<a href="${s.uri}" target="_blank" class="text-cyan-700 hover:underline">${index + 1}. ${s.title}</a>`
+                        ).join('<br>');
+                        resultSourcesEl.innerHTML = `Sources : ${sourcesList}`;
+                    } else {
+                         resultSourcesEl.innerHTML = 'Sources : Aucune source Web trouvée pour étayer cette analyse.';
+                    }
+
+                    resultDiv.classList.remove('hidden', 'bg-red-100', 'border-red-300');
+                    resultDiv.classList.add('bg-cyan-50/70', 'border-cyan-200');
+                } else {
+                    displayError("Désolé, la génération de la stratégie a échoué. Veuillez réessayer.");
+                }
+
+            } catch (error) {
+                console.error("Erreur Gemini API:", error);
+                displayError(`Erreur de connexion ou de traitement : ${error.message}.`);
+            } finally {
+                hideLoading();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const pestelData = {
+                politique: {
+                    label: 'Politique',
+                    score: 4,
+                    text: "Stabilité relative; CMU et renforcement des infrastructures sanitaires (PSE); alignement avec les politiques de santé de proximité; opportunités de financement public/international via CMU.",
+                    color: 'rgba(74, 144, 226, 1)'
+                },
+                economique: {
+                    label: 'Économique',
+                    score: 1,
+                    text: "Croissance soutenue mais budgets santé limités; inflation sur les produits importés; coût local réduit du VenoLight offre une alternative économique et soutient la souveraineté technologique.",
+                    color: 'rgba(80, 227, 194, 1)'
+                },
+                social: {
+                    label: 'Social',
+                    score: 5,
+                    text: "Population jeune et urbanisation; inégalités d’accès aux soins; le dispositif portable répond aux besoins des structures sous-équipées et réduit le stress des patients vulnérables.",
+                    color: 'rgba(245, 166, 35, 1)'
+                },
+                technologique: {
+                    label: 'Technologique',
+                    score: 3,
+                    text: "Écosystème IoT et fab labs en émergence; bonne connectivité numérique; opportunité d’intégrer des modules IoT pour le suivi d’usage et de performance.",
+                    color: 'rgba(126, 211, 33, 1)'
+                },
+                environnemental: {
+                    label: 'Environnemental',
+                    score: -1,
+                    text: "Attention croissante à la durabilité; design éco-responsable et matériaux compatibles; réduction de l’empreinte écologique par localisation et coût.",
+                    color: 'rgba(189, 16, 224, 1)'
+                },
+                legal: {
+                    label: 'Légal',
+                    score: -2,
+                    text: "Régulation stricte par l’ANAC-IM; importance d’intégrer la conformité (tests électriques, biocompatibilité) dès les premières phases pour accélérer l’homologation.",
+                    color: 'rgba(208, 2, 27, 1)'
+                }
+            };
+
+            const keyToSuffix = {
+                'politique': 'p',
+                'economique': 'e',
+                'social': 's',
+                'technologique': 't',
+                'environnemental': 'env',
+                'legal': 'l'
+            };
+            
+            const pestelTitleEl = document.getElementById('pestel-title');
+            const pestelTextEl = document.getElementById('pestel-text');
+            const buttons = {
+                p: document.getElementById('btn-p'),
+                e: document.getElementById('btn-e'),
+                s: document.getElementById('btn-s'),
+                t: document.getElementById('btn-t'),
+                env: document.getElementById('btn-env'),
+                l: document.getElementById('btn-l')
+            };
+
+            const ctx = document.getElementById('pestelChart').getContext('2d');
+            const pestelChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: Object.values(pestelData).map(d => d.label),
+                    datasets: [{
+                        label: 'Impact sur le Projet (Opportunité vs Contrainte)',
+                        data: Object.values(pestelData).map(d => d.score),
+                        fill: true,
+                        backgroundColor: 'rgba(74, 144, 226, 0.2)',
+                        borderColor: 'rgba(74, 144, 226, 1)',
+                        pointBackgroundColor: Object.values(pestelData).map(d => d.color),
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(74, 144, 226, 1)'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: {
+                            borderWidth: 2
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: -5,
+                            suggestedMax: 5,
+                            pointLabels: {
+                                font: {
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                             callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.r !== null) {
+                                        if(context.parsed.r > 0) label += `Opportunité (${context.parsed.r})`;
+                                        else if (context.parsed.r < 0) label += `Contrainte (${context.parsed.r})`;
+                                        else label += 'Neutre (0)';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            function updateDetails(key) {
+                const data = pestelData[key];
+                pestelTitleEl.textContent = data.label;
+                pestelTextEl.textContent = data.text;
+                
+                document.querySelectorAll('.pestel-btn').forEach(btn => {
+                    btn.classList.remove('bg-cyan-500', 'text-white');
+                    btn.classList.add('bg-gray-300', 'text-gray-800');
+                });
+                
+                const suffix = keyToSuffix[key];
+                const selectedButton = document.getElementById(`btn-${suffix}`);
+                
+                if (selectedButton) {
+                    selectedButton.classList.add('bg-cyan-500', 'text-white');
+                    selectedButton.classList.remove('bg-gray-300', 'text-gray-800');
+                }
+            }
+
+            buttons.p.addEventListener('click', () => updateDetails('politique'));
+            buttons.e.addEventListener('click', () => updateDetails('economique'));
+            buttons.s.addEventListener('click', () => updateDetails('social'));
+            buttons.t.addEventListener('click', () => updateDetails('technologique'));
+            buttons.env.addEventListener('click', () => updateDetails('environnemental'));
+            buttons.l.addEventListener('click', () => updateDetails('legal'));
+
+            updateDetails('politique'); 
+
+            generateBtn.addEventListener('click', generateStrategy);
+        });
+
+    </script>
+</body>
+</html>
